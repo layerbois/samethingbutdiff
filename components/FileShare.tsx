@@ -23,37 +23,26 @@ const FileShare = ({ contract }: { contract: any }) => {
     contract && accessList();
   }, [contract]);
   return (
-    <>
-      <div className="w-full h-full flex">
-        <h2 className="text-3xl bg-violet-950 text-white font-bold">
-          Sharing is Caring
-        </h2>
-        <div className="w-2/3 h-2/3 flex justify-center items-center">
-          <div className="flex justify-center gap-5 items-center flex-col w-full bg-violet-700 h-full p-3">
-            <div className="text-2xl w-full font-bold flex justify-center items-start">
-              Share with
-            </div>
-
-            <input
-              type="text"
-              id="address"
-              className="text-black w-fit p-3 focus:outline-none rounded"
-              placeholder="Enter Address"
-            ></input>
-
-            <form id="myForm">
-              <select
-                id="selectNumber"
-                className="text-black w-full p-3 focus:outline-none rounded"
-              >
-                <option className="address">People With Access</option>
-              </select>
-            </form>
-            <div className="footer flex gap-5">
-              <button id="cancelBtn">Cancel</button>
-              <button onClick={() => sharing()}>Share</button>
-            </div>
+    <>        
+      <div className="w-2/3 h-2/3 flex justify-center items-center">
+        <div className="flex justify-center gap-5 items-center flex-col w-full border border-white bg-violet-950 bg-dot-white/[0.2] h-full p-3 rounded-md">
+          <div className="text-3xl w-full font-sans font-normal flex justify-center backdrop-blur-sm items-start">
+            Share with
           </div>
+          <input
+            type="text"
+            id="address"
+            className="text-lg w-1/2 font-normal font-sans backdrop-blur-sm bg-gradient-to-br from-slate-700 to-black border border-violet-500 rounded-md p-1"
+            placeholder="Enter Address"
+          />
+          <select
+            id="selectNumber"
+            className="text-lg w-1/2 font-normal font-sans backdrop-blur-sm bg-gradient-to-br from-slate-700 to-black border border-violet-500 rounded-md p-1"
+          >
+            <option className="address">People With Access</option>
+          </select>
+          <button id="cancelBtn" className="text-xl py-1 font-sans font-normal backdrop-blur-sm w-1/2 border border-transparent hover:border-white hover:bg-red-600 hover:bg-opacity-45 rounded-md active:border-2 transition-all duration-200 ease-in">Cancel</button>
+          <button onClick={() => sharing()} className="text-xl py-1 font-sans font-normal backdrop-blur-sm w-1/2 border border-transparent hover:border-white rounded-md active:border-2 transition-all duration-200 ease-in">Share</button>
         </div>
       </div>
     </>
