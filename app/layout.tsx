@@ -9,29 +9,15 @@ const inter = Inter({ subsets: ["latin"] });
 
 const loadingStates = [
   {
-    text: "Buying a condo",
+    text: "Verifying your identity",
   },
   {
-    text: "Travelling in a flight",
+    text: "Looking for metamask",
   },
   {
-    text: "Meeting Tyler Durden",
+    text: "Gassing your transaction",
   },
-  {
-    text: "He makes soap",
-  },
-  {
-    text: "We goto a bar",
-  },
-  {
-    text: "Start a fight",
-  },
-  {
-    text: "We like it",
-  },
-  {
-    text: "Welcome to F**** C***",
-  },
+  
 ];
 
 
@@ -45,7 +31,7 @@ export default function RootLayout({
 
   setTimeout(() => {
     setLoading(false);
-  }, 4000)
+  }, 5000)
 
   return (
     <html lang="en">
