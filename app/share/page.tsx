@@ -1,29 +1,13 @@
-"use client";
+'use client';
 
 import Upload from "@/artifacts/contracts/Upload.sol/Upload.json";
-import Image from "next/image";
-import Spline from "@splinetool/react-spline";
-import { Tabs } from "@/components/ui/tabs";
-import FileUpload from "@/components/FileUpload";
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
-import FileShare from "@/components/FileShare";
-import FileDisplay from "@/components/FileDisplay";
+import FileShare from "@/components/FileShare"
 
-const DummyContent = () => {
-  return (
-    <Image
-      src="/linear.webp"
-      alt="dummy image"
-      width="1000"
-      height="1000"
-      className="object-cover object-left-top h-[60%]  md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto"
-    />
-  );
-};
+const SharePage = () => {
 
-export default function Home() {
-  const [contract, setContract] = useState<any>();
+    const [contract, setContract] = useState<any>();
   const [provider, setProvider] = useState<any>();
   const [account, setAccount] = useState<any>();
 
@@ -64,95 +48,13 @@ export default function Home() {
     provider && loadProvider();
   }, []);
 
-  const tabs = [
-    {
-      title: "Home",
-      value: "Home",
-      content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700  to-black">
-          <div className="flex flex-row w-full justify-between h-auto z-[100]">
-            <Image
-              src="/avalanche.svg"
-              alt="avalanche"
-              width="1000"
-              height="1000"
-              className="object-cover w-12 h-12"
-            />
-            <p className="font-mono text-4xl font-thin text-white w-full">
-              BlockShare
-            </p>
-            <Image
-              src="/shardeum.svg"
-              alt="shardeum"
-              width="1000"
-              height="1000"
-              className="object-cover w-auto h-10"
-            />
-          </div>
-          <Spline scene="https://prod.spline.design/07UHRUIIKhLzmPlc/scene.splinecode" />
-        </div>
-      ),
-    },
-    {
-      title: "Upload",
-      value: "Upload",
-      content: (
-        <div className="w-full flex justify-center items-center overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <FileUpload
-            contract={contract}
-            provider={provider}
-            account={account}
-          />
-        </div>
-      ),
-    },
-    {
-      title: "Share",
-      value: "Share",
-      content: (
-        <div className="w-full flex justify-center items-center overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-violet-900 to-purple-700">
-          <FileShare contract={contract} />
-        </div>
-      ),
-    },
-    {
-      title: "Display",
-      value: "Display",
-      content: (
-        <div className="w-full flex justify-center items-center overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <FileDisplay contract={contract} account={account} />
-        </div>
-      ),
-    }
-  ];
-
-  return (
-    <main className="flex min-h-screen w-screen flex-col items-center overflow-hidden">
-      <section className="h-[20rem] md:h-[40rem] [perspective:1000px]  w-screen z-20 relative flex flex-col max-w-5xl mx-auto items-start justify-start my-6">
-        <Tabs tabs={tabs}  />
-      </section>
-        <Image
-          src="/sphere1.svg"
-          alt="shardeum"
-          width="1000"
-          height="1000"
-          className="object-cover w-auto h-24 absolute bottom-10 right-[100%] blur-[4px] z-10 inset-x-0  rounded-xl"
-        />
-        <Image
-          src="/Cube.svg"
-          alt="shardeum"
-          width="1000"
-          height="1000"
-          className="object-cover w-auto h-24 absolute top-36 right-[90vw] blur-[4px] z-10 inset-x-0  rounded-xl mx-auto"
-        />
-        <Image
-          src="/sphere.svg"
-          alt="shardeum"
-          width="1000"
-          height="1000"
-          className="object-cover w-auto h-[600px] rotate-6 absolute left-[70vw] blur-[4px] z-10 top-10  inset-x-0  rounded-xl mx-auto"
-        />
+    return(
+        <main className="flex min-h-screen flex-row items-center ">
+      <div className="h-[20rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-12">
+        <FileShare contract={contract} />
+      </div>
     </main>
-  );
+    )
 }
-  
+
+export default SharePage
