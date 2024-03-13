@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@metamask/detect-provider": "^2.0.0",
     "@splinetool/react-spline": "^2.2.6",
     "@tabler/icons-react": "^3.0.1",
     "@types/axios": "^0.14.0",
