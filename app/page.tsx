@@ -1,8 +1,13 @@
 'use client';
+
 import Upload from "@/artifacts/contracts/Upload.sol/Upload.json";
 import Image from "next/image";
 import Spline from '@splinetool/react-spline';
 import { Tabs } from "@/components/ui/tabs";
+import FileUpload from "@/components/FileUpload";
+import Upload from "@/artifacts/contracts/Upload.sol/Upload.json";;
+import { useEffect, useState } from "react";
+import { ethers } from "ethers";
 
 
 const DummyContent = () => {
@@ -17,35 +22,72 @@ const DummyContent = () => {
   );
 };
 
-const tabs = [
-  {
-    title: "Home",
-    value: "Home",
-    content: (
-      <div className="w-full overflow-x-hidden overflow-y-auto relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700  to-black">
-        <Spline scene="https://prod.spline.design/07UHRUIIKhLzmPlc/scene.splinecode" />
-      </div>
-    ),
-  },
-  {
-    title: "Upload",
-    value: "Upload",
-    content: (
-      <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-        <p>Services tab</p>
-        <DummyContent />
-      </div>
-    ),
-  },
-];
-
-
-
 export default function Home() {
 
-  
+  const [contract, setContract] = useState<any>();
+  const [provider, setProvider] = useState<any>();
+  const [account, setAccount] = useState<any>();
+
+  useEffect(() => {
+    const provider = new ethers.providers.Web3Provider(
+      (window as any).ethereum
+    );
+
+    const loadProvider = async () => {
+      if (provider) {
+        (window as any).ethereum.on("chainChanged", () => {
+          window.location.reload();
+        });
+
+        (window as any).ethereum.on("accountsChanged", () => {
+          window.location.reload();
+        });
+        await provider.send("eth_requestAccounts", []);
+        const signer = provider.getSigner();
+        const address = await signer.getAddress();
+        setAccount(address);
+
+        let contractAddress = "0xd9145CCE52D386f254917e481eB44e9943F39138";
+
+        //
+
+        const contract = new ethers.Contract(
+          contractAddress,
+          Upload.abi,
+          signer
+        );
+        setContract(contract);
+        setProvider(provider);
+      } else {
+        console.error("Metamask is not installed");
+      }
+    };
+    provider && loadProvider();
+  }, []);
+
+  const tabs = [
+    {
+      title: "Home",
+      value: "Home",
+      content: (
+        <div className="w-full overflow-x-hidden overflow-y-auto relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700  to-black">
+          <Spline scene="https://prod.spline.design/07UHRUIIKhLzmPlc/scene.splinecode" />
+        </div>
+      ),
+    },
+    {
+      title: "Upload",
+      value: "Upload",
+      content: (
+        <div className="w-full flex justify-center items-center overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+          <FileUpload contract={contract} provider={provider} account={account}  />
+        </div>
+      ),
+    },
+  ];
   
 
+export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center ">
       <div className="h-[20rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-12">
