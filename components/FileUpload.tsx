@@ -73,27 +73,34 @@ function FileUpload({
   return (
     <div className="w-11/12 h-11/12 bg-inherit rounded-xl flex justify-center items-center">
       <form
-        className="flex flex-col gap-10 h-full justify-center items-start"
+        className="flex flex-col gap-10 h-full justify-center items-center"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-4xl font-bold">Let's Upload Something!</h1>
+        <h1 className=" text-3xl font-normal font-sans ">Upload your files</h1>
         <input
-        className="w-full text-base bg-violet-800 outline-none h-60 border-dotted border-4 border-white"
+          className="w-full text-lg font-normal font-sans  bg-gradient-to-br from-gray-700  to-black outline-none h-60 border rounded-md border-white"
           disabled={!account} //disabling button when metamask account is not connected
           type="file"
           id="file-upload"
           name="data"
+          accept="image/*"
+          multiple={false}
+          
           onChange={retrieveFile}
         />
         <span className="text-xl font-semibold">
-          Image: <span className="text-violet-200">{fileName}</span>
+          {fileName && <span className="text-violet-300">Image: {fileName}</span>}
         </span>
-        {/* choose file */}
-        <button className="self-center w-1/3 p-[3px] relative border-none outline-none">
-          <div className="bg-black text-xl p-3 rounded-[6px] hover:bg-gradient-to-r from-purple-700 to-gray-800 relative group ease-in-out border-white border-4 duration-200 text-white">
-            Upload
-          </div>
+        
+        
+        <button
+          className="w-full h-12 bg-violet-500 text-white text-lg font-normal font-sans rounded-md hover:bg-violet-700 transition-all duration-300 ease-in-out hover:text-gray-400"
+          type="submit"
+          disabled={!file}
+        >
+          Upload
         </button>
+
       </form>
     </div>
   );
