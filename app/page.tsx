@@ -1,7 +1,9 @@
 'use client';
+import Upload from "@/artifacts/contracts/Upload.sol/Upload.json";
 import Image from "next/image";
 import Spline from '@splinetool/react-spline';
 import { Tabs } from "@/components/ui/tabs";
+
 
 const DummyContent = () => {
   return (
@@ -38,7 +40,12 @@ const tabs = [
 ];
 
 
+
 export default function Home() {
+
+  
+  
+
   return (
     <main className="flex min-h-screen flex-col items-center ">
       <div className="h-[20rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-12">
