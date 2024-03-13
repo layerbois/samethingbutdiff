@@ -10,6 +10,17 @@ import { ethers } from "ethers";
 import FileShare from "@/components/FileShare";
 import FileDisplay from "@/components/FileDisplay";
 
+const DummyContent = () => {
+  return (
+    <Image
+      src="/linear.webp"
+      alt="dummy image"
+      width="1000"
+      height="1000"
+      className="object-cover object-left-top h-[60%]  md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto"
+    />
+  );
+};
 
 export default function Home() {
   const [contract, setContract] = useState<any>();
@@ -65,8 +76,11 @@ export default function Home() {
               alt="avalanche"
               width="1000"
               height="1000"
-              className="object-cover w-16 h-16"
+              className="object-cover w-12 h-12"
             />
+            <p className="font-mono text-4xl font-thin text-white w-full">
+              BlockShare
+            </p>
             <Image
               src="/shardeum.svg"
               alt="shardeum"
@@ -75,7 +89,7 @@ export default function Home() {
               className="object-cover w-auto h-10"
             />
           </div>
-          <Spline scene="https://prod.spline.design/07UHRUIIKhLzmPlc/scene.splinecode" className=" cursor-grab active:cursor-grabbing" />
+          <Spline scene="https://prod.spline.design/07UHRUIIKhLzmPlc/scene.splinecode" />
         </div>
       ),
     },
@@ -83,7 +97,7 @@ export default function Home() {
       title: "Upload",
       value: "Upload",
       content: (
-        <div className="w-full flex justify-center items-center overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700  to-black">
+        <div className="w-full flex justify-center items-center overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
           <FileUpload
             contract={contract}
             provider={provider}
@@ -96,7 +110,7 @@ export default function Home() {
       title: "Share",
       value: "Share",
       content: (
-        <div className="w-full flex justify-center items-center overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700  to-black">
+        <div className="w-full flex justify-center items-center overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-violet-900 to-purple-700">
           <FileShare contract={contract} />
         </div>
       ),
@@ -105,7 +119,7 @@ export default function Home() {
       title: "Display",
       value: "Display",
       content: (
-        <div className="w-full flex flex-col justify-center gap-4 items-center overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700  to-black">
+        <div className="w-full flex justify-center items-center overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
           <FileDisplay contract={contract} account={account} />
         </div>
       ),
@@ -136,7 +150,7 @@ export default function Home() {
           alt="shardeum"
           width="1000"
           height="1000"
-          className="object-cover w-auto h-[600px] rotate-45 absolute left-[75vw] blur-[4px] z-10 top-10  inset-x-0  rounded-xl mx-auto"
+          className="object-cover w-auto h-[600px] rotate-6 absolute left-[70vw] blur-[4px] z-10 top-10  inset-x-0  rounded-xl mx-auto"
         />
     </main>
   );
