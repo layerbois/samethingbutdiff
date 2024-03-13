@@ -76,7 +76,7 @@ export default function Home() {
               alt="avalanche"
               width="1000"
               height="1000"
-              className="object-cover w-12 h-12"
+              className="object-cover w-16 h-16"
             />
             <Image
               src="/shardeum.svg"
@@ -86,7 +86,7 @@ export default function Home() {
               className="object-cover w-auto h-10"
             />
           </div>
-          <Spline scene="https://prod.spline.design/07UHRUIIKhLzmPlc/scene.splinecode" />
+          <Spline scene="https://prod.spline.design/07UHRUIIKhLzmPlc/scene.splinecode" className=" cursor-grab active:cursor-grabbing" />
         </div>
       ),
     },
