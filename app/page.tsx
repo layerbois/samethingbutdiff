@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
 import Upload from "@/artifacts/contracts/Upload.sol/Upload.json";
 import Image from "next/image";
-import Spline from '@splinetool/react-spline';
+import Spline from "@splinetool/react-spline";
 import { Tabs } from "@/components/ui/tabs";
 import FileUpload from "@/components/FileUpload";
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
-
+import FileShare from "@/components/FileShare";
+import FileDisplay from "@/components/FileDisplay";
 
 const DummyContent = () => {
   return (
@@ -22,7 +23,6 @@ const DummyContent = () => {
 };
 
 export default function Home() {
-
   const [contract, setContract] = useState<any>();
   const [provider, setProvider] = useState<any>();
   const [account, setAccount] = useState<any>();
@@ -79,12 +79,34 @@ export default function Home() {
       value: "Upload",
       content: (
         <div className="w-full flex justify-center items-center overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <FileUpload contract={contract} provider={provider} account={account}  />
+          <FileUpload
+            contract={contract}
+            provider={provider}
+            account={account}
+          />
         </div>
       ),
     },
+    {
+      title: "Share",
+      value: "Share",
+      content: (
+        <div className="w-full flex justify-center items-center overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-violet-900 to-purple-700">
+          <FileShare contract={contract} />
+        </div>
+      ),
+    },
+    {
+      title: "Display",
+      value: "Display",
+      content: (
+        <div className="w-full flex justify-center items-center overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+          <FileDisplay contract={contract} account={account} />
+        </div>
+      ),
+    }
   ];
-  
+
   return (
     <main className="flex min-h-screen flex-col items-center ">
       <div className="h-[20rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-12">
@@ -93,4 +115,3 @@ export default function Home() {
     </main>
   );
 }
-  
