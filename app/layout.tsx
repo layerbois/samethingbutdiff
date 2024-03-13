@@ -29,14 +29,14 @@ export default function RootLayout({
 }>) {
   const [loading, setLoading] = useState(true);
 
-  setTimeout(() => {
-    setLoading(false);
-  }, 5000)
+  // setTimeout(() => {
+  //   setLoading(false);
+  // }, 5000)
 
   return (
     <html lang="en">
       <body className="bg-violet-800">
-      {loading && <MultiStepLoader loadingStates={loadingStates} loading={loading} duration={2000} />}
+      {/* {loading && <MultiStepLoader loadingStates={loadingStates} loading={loading} duration={2000} />}} */}
         {children}
       </body>
     </html>
