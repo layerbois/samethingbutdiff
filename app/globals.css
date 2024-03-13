@@ -42,3 +42,7 @@ body {
 .no-visible-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+nextjs-portal {
+  display: none;
+}

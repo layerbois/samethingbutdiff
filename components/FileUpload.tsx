@@ -73,10 +73,10 @@ function FileUpload({
   return (
     <div className="w-11/12 h-11/12 bg-inherit rounded-xl flex justify-center items-center">
       <form
-        className="flex flex-col gap-10 h-full justify-center items-center"
+        className="flex flex-col gap-10 h-full py-4 px-6 border border-white rounded-md bg-violet-950 justify-center items-center bg-dot-white/[0.2]"
         onSubmit={handleSubmit}
       >
-        <h1 className=" text-3xl font-normal font-sans ">Upload your files</h1>
+        <h1 className=" text-3xl font-normal font-sans backdrop-blur-sm w-full text-center ">Upload your files</h1>
         <input
           className="w-full text-lg font-normal font-sans  bg-gradient-to-br from-gray-700  to-black outline-none h-60 border rounded-md border-white"
           disabled={!account} //disabling button when metamask account is not connected
@@ -89,12 +89,12 @@ function FileUpload({
           onChange={retrieveFile}
         />
         <span className="text-xl font-semibold">
-          {fileName && <span className="text-violet-300">Image: {fileName}</span>}
+          {fileName && <span className="text-violet-300 backdrop-blur-sm">Image: {fileName}</span>}
         </span>
         
         
         <button
-          className="w-full h-12 bg-violet-500 text-white text-lg font-normal font-sans rounded-md hover:bg-violet-700 transition-all duration-300 ease-in-out hover:text-gray-400"
+          className="text-xl py-1 font-sans font-normal backdrop-blur-sm w-full border border-transparent hover:border-white rounded-md active:border-2 transition-all duration-200 ease-in"
           type="submit"
           disabled={!file}
         >

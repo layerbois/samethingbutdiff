@@ -49,16 +49,15 @@ const Display = ({ contract, account }: {contract: any, account: any}) => {
   
 
   return (
-    <>
-      <h2 className="header">No One Can See Except You!</h2>
-      <div className="image-list">{data}</div>
-
-      <input type="text" placeholder="Enter Address" id="address"></input>
-
-      <button className="center button" onClick={getdata}>
+    <section className="flex flex-col w-10/12 items-center justify-evenly space-y-4 border-white border rounded-md py-4 bg-violet-950 bg-dot-white/[0.2] ">
+      {/* <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div> */}
+      <h1 className=" text-3xl font-sans font-normal text-start backdrop-blur-sm rounded-md w-1/2">Display your Images</h1>
+      <input type="text" placeholder="Enter the Address" id="address" className=" text-lg w-1/2 font-normal font-sans backdrop-blur-sm bg-gradient-to-br from-slate-700 to-black border border-violet-500 rounded-md p-1"></input>
+      <button className="text-xl py-1 font-sans font-normal backdrop-blur-sm w-1/2 border border-transparent hover:border-white rounded-md active:border-2 transition-all duration-200 ease-in" onClick={getdata}>
         Get Data
       </button>
-    </>
+      <div className="image-list my-2">{data}</div>
+    </section>
   );
 };
 
