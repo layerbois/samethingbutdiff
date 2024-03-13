@@ -69,7 +69,23 @@ export default function Home() {
       title: "Home",
       value: "Home",
       content: (
-        <div className="w-full overflow-x-hidden overflow-y-auto relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700  to-black">
+        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700  to-black">
+          <div className="flex flex-row w-full justify-between h-auto z-[100]">
+            <Image
+              src="/avalanche.svg"
+              alt="avalanche"
+              width="1000"
+              height="1000"
+              className="object-cover w-12 h-12"
+            />
+            <Image
+              src="/shardeum.svg"
+              alt="shardeum"
+              width="1000"
+              height="1000"
+              className="object-cover w-auto h-10"
+            />
+          </div>
           <Spline scene="https://prod.spline.design/07UHRUIIKhLzmPlc/scene.splinecode" />
         </div>
       ),
@@ -86,10 +102,31 @@ export default function Home() {
   ];
   
   return (
-    <main className="flex min-h-screen flex-col items-center ">
-      <div className="h-[20rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-12">
-        <Tabs tabs={tabs} />
-      </div>
+    <main className="flex min-h-screen w-screen flex-col items-center overflow-hidden">
+      <section className="h-[20rem] md:h-[40rem] [perspective:1000px]  w-screen z-20 relative flex flex-col max-w-5xl mx-auto items-start justify-start my-6">
+        <Tabs tabs={tabs}  />
+      </section>
+        <Image
+          src="/sphere1.svg"
+          alt="shardeum"
+          width="1000"
+          height="1000"
+          className="object-cover w-auto h-24 absolute bottom-10 right-[100%] blur-[4px] z-10 inset-x-0  rounded-xl"
+        />
+        <Image
+          src="/Cube.svg"
+          alt="shardeum"
+          width="1000"
+          height="1000"
+          className="object-cover w-auto h-24 absolute top-36 right-[90vw] blur-[4px] z-10 inset-x-0  rounded-xl mx-auto"
+        />
+        <Image
+          src="/sphere.svg"
+          alt="shardeum"
+          width="1000"
+          height="1000"
+          className="object-cover w-auto h-[600px] rotate-6 absolute left-[70vw] blur-[4px] z-10 top-10  inset-x-0  rounded-xl mx-auto"
+        />
     </main>
   );
 }
